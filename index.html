@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description"
-        content="Beyond the Rent helps renters organize housing costs, compare questions, and prepare for property visits.">
+        content="Beyond the Rent helps renters organize questions about housing costs and prepare for property visits.">
   <title>Beyond the Rent | Housing Guide</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -14,14 +14,11 @@
   <header class="site-header">
     <div class="container cluster">
       <a class="site-logo" href="index.html">Beyond the Rent</a>
-
       <nav aria-label="Main navigation">
         <ul class="nav-list">
           <li><a href="index.html" aria-current="page">Home</a></li>
           <li><a href="#fees">Fees</a></li>
-          <li><a href="#comparison">Comparison</a></li>
           <li><a href="#checklist">Checklist</a></li>
-          <li><a href="#resources">Resources</a></li>
         </ul>
       </nav>
     </div>
@@ -29,18 +26,13 @@
 
   <main id="main" class="container" tabindex="-1">
     <section class="hero stack" aria-labelledby="hero-title">
-      <p class="eyebrow u-uppercase">A clearer rental search</p>
+      <p class="u-uppercase">A clearer rental search</p>
       <h1 id="hero-title">Look beyond the advertised rent.</h1>
       <p class="u-measure">
-        Organize your questions about recurring costs, move-in expenses,
+        Organize questions about monthly charges, move-in expenses,
         and rental terms before choosing a place to live.
       </p>
-      <div class="cluster">
-        <a class="button" href="#checklist">Use the visit checklist</a>
-        <a class="button button--secondary" href="#comparison">
-          Review comparison questions
-        </a>
-      </div>
+      <a class="button" href="#checklist">Use the visit checklist</a>
     </section>
 
     <section id="fees" class="section stack" aria-labelledby="fees-title">
@@ -48,80 +40,31 @@
 
       <div class="card-grid">
         <article class="card">
-          <h3>Recurring costs</h3>
-          <p>
-            Ask which charges are paid every month and which are
-            included in the advertised rent.
-          </p>
-          <a href="#comparison">Compare recurring-cost questions</a>
+          <h3>Monthly charges</h3>
+          <p>Ask which recurring charges are separate from rent.</p>
+          <a href="#checklist">Prepare your questions</a>
         </article>
 
         <article class="card">
           <h3>Move-in expenses</h3>
-          <p>
-            Request an itemized list of payments due before or
-            when you move in.
-          </p>
-          <a href="#checklist">Review your visit checklist</a>
+          <p>Request an itemized list of payments due before moving in.</p>
+          <a href="#checklist">Review the checklist</a>
         </article>
 
         <article class="card">
           <h3>Written information</h3>
-          <p>
-            Keep the listing, fee information, and answers you receive
-            together for later review.
-          </p>
-          <a href="#resources">Explore renter resources</a>
+          <p>Keep cost information and answers together for later review.</p>
+          <a href="#checklist">Plan your visit</a>
         </article>
       </div>
 
-      <aside class="callout" aria-labelledby="callout-title">
-        <h3 id="callout-title">Confirm the details</h3>
+      <aside class="callout stack" aria-labelledby="notice-title">
+        <h3 id="notice-title">Confirm the details</h3>
         <p>
           This guide provides organizational questions, not legal advice.
           Ask the property contact to confirm costs and terms in writing.
         </p>
       </aside>
-    </section>
-
-    <section id="comparison" class="section stack"
-             aria-labelledby="comparison-title">
-      <h2 id="comparison-title">Compare the same information</h2>
-      <p class="u-measure">
-        Use these questions when reviewing each rental option.
-        This demonstration does not calculate or store costs.
-      </p>
-
-      <div class="table-wrapper" role="region"
-           aria-labelledby="comparison-title" tabindex="0">
-        <table class="comparison-table">
-          <caption>Questions for comparing rental costs</caption>
-          <thead>
-            <tr>
-              <th scope="col">Cost category</th>
-              <th scope="col">Question to ask</th>
-              <th scope="col">Information to keep</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Monthly charges</th>
-              <td>What recurring charges are separate from rent?</td>
-              <td>An itemized monthly cost list.</td>
-            </tr>
-            <tr>
-              <th scope="row">Move-in payments</th>
-              <td>What payments are due before receiving the keys?</td>
-              <td>Amounts, due dates, and refund conditions.</td>
-            </tr>
-            <tr>
-              <th scope="row">Utilities</th>
-              <td>Which utilities must the renter arrange?</td>
-              <td>Responsibilities and available billing details.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
     </section>
 
     <section id="checklist" class="section stack"
@@ -156,28 +99,9 @@
         </label>
       </fieldset>
     </section>
-
-    <section id="resources" class="section stack"
-             aria-labelledby="resources-title">
-      <h2 id="resources-title">Renter resources</h2>
-      <ul class="resource-list">
-        <li>
-          <a href="https://www.hud.gov/">
-            U.S. Department of Housing and Urban Development
-          </a>
-          <p>Explore federal housing information and programs.</p>
-        </li>
-        <li>
-          <a href="https://www.consumerfinance.gov/">
-            Consumer Financial Protection Bureau
-          </a>
-          <p>Explore consumer financial education and information.</p>
-        </li>
-      </ul>
-    </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer u-text-center">
     <div class="container stack">
       <p><strong>Beyond the Rent</strong></p>
       <p>CSS architecture demonstration by Kiara McRae.</p>

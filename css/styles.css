@@ -1,7 +1,7 @@
-/* Beyond the Rent: production CSS architecture */
+/* Beyond the Rent | Kiara McRae */
 @layer reset, base, layout, components, utilities, states, overrides, print;
 
-/* 1. Reset */
+/* RESET */
 @layer reset {
   *,
   *::before,
@@ -9,37 +9,21 @@
     box-sizing: border-box;
   }
 
-  body,
-  h1,
-  h2,
-  h3,
-  p {
+  body, h1, h2, h3, p {
     margin: 0;
   }
 
-  input,
-  button,
-  select,
-  textarea {
+  input {
     font: inherit;
-  }
-
-  img,
-  svg {
-    display: block;
-    max-width: 100%;
-    height: auto;
   }
 }
 
-/* 2. Foundation: tokens and document defaults */
+/* BASE: shared tokens and document defaults */
 @layer base {
   :root {
-    /* Color */
     --color-background: #fffaf3;
     --color-surface: #ffffff;
     --color-text: #242b32;
-    --color-muted: #505963;
     --color-brand: #763820;
     --color-brand-hover: #542716;
     --color-border: #a79d91;
@@ -47,34 +31,22 @@
     --color-complete: #e8f1e9;
     --color-focus: #005fcc;
 
-    /* Typography */
     --font-body: Arial, Helvetica, sans-serif;
     --font-heading: Georgia, "Times New Roman", serif;
-    --text-small: 0.875rem;
     --text-body: 1rem;
-    --text-h3: 1.25rem;
-    --text-h2: clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem);
-    --text-h1: clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
-    --line-body: 1.6;
-    --line-heading: 1.2;
+    --text-small: 0.875rem;
+    --text-title: clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
 
-    /* Spacing */
-    --space-1: 0.25rem;
-    --space-2: 0.5rem;
-    --space-3: 0.75rem;
-    --space-4: 1rem;
-    --space-6: 1.5rem;
-    --space-8: 2rem;
-    --space-12: 3rem;
+    --space-small: 0.5rem;
+    --space-medium: 1rem;
+    --space-large: 1.5rem;
+    --space-section: 3rem;
 
-    /* Shape and sizing */
     --radius-small: 0.375rem;
     --radius-card: 0.75rem;
     --border-width: 1px;
     --container-width: 72rem;
     --measure: 65ch;
-
-    /* Keyboard focus */
     --focus-width: 3px;
     --focus-offset: 3px;
   }
@@ -82,46 +54,34 @@
   body {
     background: var(--color-background);
     color: var(--color-text);
-    font-family: var(--font-body);
-    font-size: var(--text-body);
-    line-height: var(--line-body);
+    font: var(--text-body)/1.6 var(--font-body);
     overflow-wrap: anywhere;
   }
 
-  h1,
-  h2,
-  h3 {
+  h1, h2, h3 {
     font-family: var(--font-heading);
-    line-height: var(--line-heading);
+    line-height: 1.2;
   }
 
   h1 {
-    font-size: var(--text-h1);
+    font-size: var(--text-title);
   }
 
   h2 {
-    font-size: var(--text-h2);
+    font-size: 1.75rem;
   }
 
   h3 {
-    font-size: var(--text-h3);
+    font-size: 1.25rem;
   }
 
   a {
     color: var(--color-brand);
-    text-decoration: underline;
     text-underline-offset: 0.2em;
   }
-
-  input[type="checkbox"] {
-    accent-color: var(--color-brand);
-  }
-
-  section {
-    scroll-margin-block-start: var(--space-6);
-  }
 }
-/* 3. Layout: reusable page compositions */
+
+/* LAYOUT: containers, spacing, and responsive composition */
 @layer layout {
   .container {
     width: min(calc(100% - 2rem), var(--container-width));
@@ -129,50 +89,48 @@
   }
 
   .stack > * + * {
-    margin-block-start: var(--space-4);
+    margin-block-start: var(--space-medium);
   }
 
   .cluster {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: var(--space-4);
-  }
-
-  .site-header .cluster {
     justify-content: space-between;
+    gap: var(--space-medium);
   }
 
-  .hero {
-    padding-block: var(--space-12);
-  }
-
+  .hero,
   .section {
-    padding-block: var(--space-8);
+    padding-block: var(--space-section);
   }
 
   .card-grid {
     display: grid;
     grid-template-columns:
       repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
-    gap: var(--space-6);
-  }
-
-  .card-grid > * {
-    min-width: 0;
+    gap: var(--space-large);
   }
 }
 
-/* 4. Components: shared patterns */
+/* COMPONENTS: navigation, button, card, callout, checklist */
 @layer components {
-  .site-header {
-    padding-block: var(--space-6);
-    border-block-end: var(--border-width) solid var(--color-border);
+  .site-header,
+  .site-footer {
+    padding-block: var(--space-large);
     background: var(--color-surface);
   }
 
+  .site-header {
+    border-bottom: var(--border-width) solid var(--color-border);
+  }
+
+  .site-footer {
+    border-top: var(--border-width) solid var(--color-border);
+  }
+
   .site-logo {
-    font-size: var(--text-h3);
+    font-size: 1.25rem;
     font-weight: bold;
     text-decoration: none;
   }
@@ -180,7 +138,7 @@
   .nav-list {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-2);
+    gap: var(--space-small);
     margin: 0;
     padding: 0;
     list-style: none;
@@ -188,42 +146,30 @@
 
   .nav-list a {
     display: inline-block;
-    padding: var(--space-2) var(--space-3);
+    padding: var(--space-small) var(--space-medium);
     border-radius: var(--radius-small);
-  }
-
-  .eyebrow {
-    color: var(--color-muted);
-    font-size: var(--text-small);
-    font-weight: bold;
   }
 
   .button {
     display: inline-block;
-    padding: var(--space-3) var(--space-6);
-    border: var(--border-width) solid var(--color-brand);
+    padding: var(--space-medium) var(--space-large);
     border-radius: var(--radius-small);
     background: var(--color-brand);
     color: var(--color-surface);
     font-weight: bold;
-    text-align: center;
     text-decoration: none;
   }
 
-  .button--secondary {
-    background: var(--color-surface);
-    color: var(--color-brand);
-  }
-
   .card {
-    /* Component-scoped tokens */
-    --card-padding: var(--space-6);
+    /* Component-scoped properties */
+    --card-padding: var(--space-large);
     --card-background: var(--color-surface);
 
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--space-4);
+    gap: var(--space-medium);
+    min-width: 0;
     padding: var(--card-padding);
     border: var(--border-width) solid var(--color-border);
     border-radius: var(--radius-card);
@@ -235,68 +181,30 @@
   }
 
   .callout {
-    padding: var(--space-6);
+    padding: var(--space-large);
     border-inline-start: 4px solid var(--color-brand);
-    border-radius: var(--radius-small);
-    background: var(--color-highlight);
-  }
-
-  .callout p {
-    margin-block-start: var(--space-2);
-  }
-
-  .table-wrapper {
-    max-width: 100%;
-    overflow-x: auto;
-    border: var(--border-width) solid var(--color-border);
-    border-radius: var(--radius-small);
-  }
-
-  .comparison-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: var(--color-surface);
-  }
-
-  .comparison-table caption {
-    padding: var(--space-4);
-    font-weight: bold;
-    text-align: start;
-  }
-
-  .comparison-table th,
-  .comparison-table td {
-    padding: var(--space-3);
-    border-block-start:
-      var(--border-width) solid var(--color-border);
-    text-align: start;
-    vertical-align: top;
-  }
-
-  .comparison-table thead {
     background: var(--color-highlight);
   }
 
   .checklist {
     min-width: 0;
     margin: 0;
-    padding: var(--space-4);
+    padding: var(--space-medium);
     border: var(--border-width) solid var(--color-border);
     border-radius: var(--radius-card);
     background: var(--color-surface);
   }
 
   .checklist legend {
-    padding-inline: var(--space-2);
+    padding-inline: var(--space-small);
     font-weight: bold;
   }
 
   .checklist__item {
     display: flex;
     align-items: flex-start;
-    gap: var(--space-3);
-    padding: var(--space-3);
-    border-radius: var(--radius-small);
+    gap: var(--space-medium);
+    padding: var(--space-medium);
     cursor: pointer;
   }
 
@@ -305,45 +213,141 @@
     width: 1.25rem;
     height: 1.25rem;
     margin: 0.2rem 0 0;
-  }
-
-  .resource-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .resource-list li {
-    padding-block: var(--space-4);
-    border-block-end:
-      var(--border-width) solid var(--color-border);
-  }
-
-  .resource-list a {
-    font-weight: bold;
-  }
-
-  .resource-list p {
-    margin-block-start: var(--space-2);
-  }
-
-  .site-footer {
-    margin-block-start: var(--space-8);
-    padding-block: var(--space-8);
-    border-block-start:
-      var(--border-width) solid var(--color-border);
-    background: var(--color-surface);
+    accent-color: var(--color-brand);
   }
 
   .skip-link {
     position: absolute;
-    inset-block-start: var(--space-2);
-    inset-inline-start: var(--space-2);
-    z-index: 10;
-    padding: var(--space-3);
+    top: var(--space-small);
+    left: var(--space-small);
+    padding: var(--space-medium);
     transform: translateY(-200%);
     background: var(--color-surface);
-    color: var(--color-brand);
+    z-index: 1;
+  }
+}
+
+/* UTILITIES: each has a single purpose */
+@layer utilities {
+  .u-measure {
+    max-width: var(--measure);
+  }
+
+  .u-uppercase {
+    font-size: var(--text-small);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .u-text-center {
+    text-align: center;
+  }
+}
+
+/* STATES: hover, focus, current page, and checked */
+@layer states {
+  a:hover {
+    text-decoration-thickness: 0.15em;
+  }
+
+  .nav-list a:hover {
+    background: var(--color-highlight);
+  }
+
+  .button:hover {
+    background: var(--color-brand-hover);
+    text-decoration: underline;
+  }
+
+  :focus-visible {
+    outline: var(--focus-width) solid var(--color-focus);
+    outline-offset: var(--focus-offset);
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+
+  .nav-list a[aria-current="page"] {
+    background: var(--color-brand);
+    color: var(--color-surface);
     font-weight: bold;
+    text-decoration: underline;
+  }
+
+  .checklist__item input:checked + span {
+    background: var(--color-complete);
+    font-weight: bold;
+    text-decoration: line-through;
+  }
+}
+
+/* OVERRIDES: reserve for documented exceptions */
+@layer overrides {
+  /* None currently needed. */
+}
+
+/* PRINT: keep the checklist and supporting text readable */
+@layer print {
+  @media print {
+    body {
+      background: white;
+      color: black;
+      font-size: 11pt;
+    }
+
+    .site-header,
+    .site-footer,
+    .skip-link,
+    .button {
+      display: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: none;
+    }
+
+    .hero,
+    .section {
+      padding-block: var(--space-medium);
+    }
+
+    h1 {
+      font-size: 24pt;
+    }
+
+    h1, h2, h3 {
+      break-after: avoid;
+    }
+
+    .card-grid {
+      display: block;
+    }
+
+    .card,
+    .callout,
+    .checklist {
+      background: white;
+      border: 1px solid black;
+    }
+
+    .card {
+      margin-block-end: var(--space-medium);
+    }
+
+    .card,
+    .callout,
+    .checklist__item {
+      break-inside: avoid;
+    }
+
+    .checklist__item input:checked + span {
+      background: white;
+    }
+
+    a {
+      color: black;
+    }
   }
 }
