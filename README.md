@@ -23,7 +23,7 @@ The declared layer order I selected is:
 
 `reset, base, layout, components, utilities, states, overrides, print`
 
-Reset takes care of the box sizing and default margins. Base defines the shared tokens and document styles. Layout controls the containers, spacing, wrapping, and the responsive grid. Components define the reusable interface patterns I have. Utilities provide small adjustments, and states define all of the interaction and selection feedback.
+Reset takes care of the box sizing and default margins. Base defines the shared tokens and document styles. Layout controls the containers, spacing, wrapping, and the responsive grid. Components define the reusable interface patterns I have. Utilities give small adjustments, and states define all of the interaction and selection feedback.
 
 The overrides layer is being saved for any documented exceptions I may come across and is currently and intentionally empty. Print rules appear last so printed output can replace screen presentation.
 
@@ -99,8 +99,8 @@ These checks cover this demo page in when using the chrome browser. Other browse
 
 ## AI Disclosure
 
-I used ChatGPT to propose the CSS architecture, draft demonstration HTML and CSS, explain the code, suggest browser checks, and help draft documentation.
+I used ChatGPT to suggest the organization, token names, and the refactoring options. 
 
 I considered an initial larger version and a simplified version. I selected the smaller version, which removed the comparison table, resource list, secondary button variation, and related styles while retaining the required core patterns.
 
-I applied the code in VS Code and performed the browser checks. AI also assisted with interpreting screenshots. The unresolved viewport discrepancy is documented rather than reported as a successful three-column test.
+I applied my code in VS Code and completed all of the browser checks myself and verified browser behavior. AI also assisted with interpreting screenshot I tried to troublehsoot regarding the cards not stacking on top of each other, but instead displaying the top two and then wrapping the third. I recorded the unresolved viewport discrepancy instead of reporting it as a successful three column test.
