@@ -1,106 +1,100 @@
-# Beyond the Rent: CSS Architecture Package
+## Module 3: Responsive Layout System
+Kiara McRae | GIT 414
 
-**Author:** Kiara McRae  
-**Course:** GIT 414  
-**Project:** Housing information guide
+### Building on Module 2
+For this week, I decided to update the extends of my existing CSS architecture rather than replacing
+it. The reset, base, layout, components, utilities, states, overrides,
+and print layers remain in place. Existing tokens, navigation, cards,
+checklist controls, keyboard focus, and print styles are retained.
 
-## Purpose and Scope
+### Responsive Foundation
+The centered container uses a flow that has logical inline sizing, automatic inline
+margins, flexible side gutters, and a maximum size of 72rem. Hero and
+section spacing use clamp(2rem, 5vw, 4rem).
 
-For this week's assignment, I built an architecture package that establishes the first reusable CSS system for my site, Beyond the Rent. The demonstration that I built to start with includes the navigation, housing information cards, a call-to-action link, an informational callout, and a property visit checklist. Just some basics to provide knowledge and guidance throughout the renter journey and their process.
+Additional logical properties include border-block-start,
+border-block-end, min-inline-size, inset-block-start, and
+inset-inline-start.
 
-The site uses only uses html and css. The native checkboxes support checklist interaction without JavaScript. Selections are not stored by the site. This is an architecture demonstration, so this was intentional so the site's functionality could be understood. 
+### Two Meaningful Grid Layouts
+1. The housing-information card grid uses two of my favorites:
+   repeat(auto-fit, minmax(min(100%, 18rem), 1fr)).
+   Cards wrap according to the available space while preserving readable
+   widths and allowing a single card to fit a narrow container.
 
-## Files
+2. The hero uses one flexible column by default. At 60rem, it
+   uses minmax(0, 3fr) and minmax(18rem, 2fr) to place the introduction
+   beside the rental-planning card.
 
-- `index.html`: is the semantic demonstration page.
-- `css/styles.css`: is the layered stylesheet to provide the layout and neutral colors.
-- `evidence/`: are my screenshots from the browser testing I conducted in devtools.
-- `README.md`: has the in detail layout of the page's architecture, refactoring, testing, and my AI disclosure notes.
+These layouts support the site's tasks of reviewing rental costs
+and preparing questions for a property visit, making it easier for the user/viewer. 
 
-## CSS Organization and Cascade Strategy
+### Content-Based Breakpoint
+The hero on the site provides a 60rem breakpoint provides room for the long main heading
+and the planning card to share a row. Below that threshold, stacking
+preserves the space for text and controls.
 
-The declared layer order I selected is:
+My testing included widths immediately below and above the threshold:
+944px and 976px. This breakpoint concerns the hero content; the
+housing-card grid determines its column count independently.
 
-`reset, base, layout, components, utilities, states, overrides, print`
+### Container-Query Component
+The rental-planning card sits inside `.resource-shell`, which declares
+the named inline-size container `planning`.
 
-Reset takes care of the box sizing and default margins. Base defines the shared tokens and document styles. Layout controls the containers, spacing, wrapping, and the responsive grid. Components define the reusable interface patterns I have. Utilities give small adjustments, and states define all of the interaction and selection feedback.
+The card has a stacked default layout. When its container reaches
+36rem, the query places its text beside its action link using
+minmax(0, 1fr) and fit-content(12rem).
 
-The overrides layer is being saved for any documented exceptions I may come across and is currently and intentionally empty. Print rules appear last so printed output can replace screen presentation.
+The component responds to its own available space. It may therefore
+use a horizontal arrangement in a full-width stacked hero and return
+to a vertical arrangement in a narrower hero column.
 
-Normal declarations in layers that come later take priority over normal declarations in earlier layers. Most selectors will typically use classes, with limited descendant selectors for the component elements. There are currently no ID selectors or `!important` declarations to be made for this week's assignment.
+### Subgrid Alternative
+Subgrid is not necessary for the current content. Housing cards use
+the same component structure, a shared gap, and a flexible column
+layout. Automatic block-start margin on each card link places it
+toward the bottom of the card.
 
-## Custom Properties and Token Decisions
+Using this alternative provides the consistent spacing and link placement without requiring
+shared internal row tracks. Subgrid can also be reconsidered if future
+cards need headings and descriptions aligned across shared rows.
 
-- **Color:** I used purpose based tokens to define backgrounds, text, brand, borders, highlights, completion feedback, and focus.
-- **Typography:** System fonts do not use any external font requests. Arial supports body text, Georgia distinguishes headings, and the main title uses a fluid size for easy readability and scanning for the viewer/user.
-- **Spacing:** Here, I am using four shared spacing values control gaps, padding, and section separation to avoid cramped and overcluttering for the viewer/user. 
-- **Shape:** I chose the shared border width and radius tokens keep all of the component edges consistent.
-- **Sizing:** A 72rem container limit controls page width, while a 65ch utility is limiting to the paragraph length. 
-- **Focus:** A blue focus outline uses shared width and offset tokens to navigate the site page with keyboard access only. (Tab button, space bar, arrows, and enter keys).
-- **Component scope:** `.card` defines the `--card-padding` and `--card-background` locally, allowing the later card variations without changing any of the global tokens.
+### Preference and Fallback Strategy
+The prefers-contrast: more query darkens component borders, increases
+their width to 2px, and increases focus outlines to 4px.
 
-## Components, Utilities, and States
+If container queries are unsupported, the planning card retains its
+stacked default. Its text and link remain available. This fallback
+path is documented; unsupported-browser behavior has not been
+separately verified.
 
-The five component patterns used on the site are the navigation, button-style links, cards, callouts, and checklist controls. The header, footer, and skip link also have repeatable and shared styles.
+Print extensions keep the hero and planning card in a simple block
+layout and preserve readable dark text on a white background.
 
-The three utilities are:
+### Testing Evidence
+I completed all of the manual checks and testing in Chrome using the local Live Server page.
+The Module 3 evidence records these conditions:
 
-- `.u-measure`: limits the text width.
-- `.u-uppercase`: styles any short introductory labels.
-- `.u-text-center`: centers the footer text at the bottom of the page.
+- Narrow viewport: 375px.
+- Medium viewport: 768px.
+- Wide viewport: 1280px.
+- Browser zoom: 200%.
+- Keyboard navigation and visible focus.
+- Increased-contrast preference emulation.
 
-States include link and button hover, keyboard focus through `:focus-visible`, current-page navigation through `aria-current="page"`, and checked checklist items. Checked items keep the native checkbox indicator and receive bold, crossed-out text to give the same idea of actually crossing off a list for the viewer/user.
+Evidence files:
+- evidence/module3/narrow-375.png
+- evidence/module3/medium-768.png
+- evidence/module3/wide-1280.png
+- evidence/module3/zoom-200.png
+- evidence/module3/keyboard-focus.png
+- evidence/module3/contrast-more.png
 
-Naming uses readable component classes such as `.card` and `.callout`, a component element name for `.checklist__item`, and a `u-` prefix for the utilities.
+The contrast screenshot shows prefers-contrast: more selected,
+the active CSS rule, and the checklist's darker, thicker border.
 
-## Refactoring Evidence
+All of these checks apply to the current demonstration page in Chrome.
 
-The earlier draft that I submitted included a comparison table, resource list, secondary button variation, and their supporting styles. The revised package takes out those demonstration sections to focus on the five core patterns as decribed above this week.
-
-The shared header and footer padding and backgrounds are now grouped into one rule. Hero and section spacing will also share one rule. The smaller spacing scale replaces the earlier collection of spacing values.
-
-The card pattern keeps one reusable class applied to the three articles. Card specific properties keep the future variations within the component instead of requiring multiple, separate copies of the complete card rule.
-
-The earlier and revised versions are kept in my GitHub repository history for comparison. This refactor reduces the scope and shared declarations.
-
-## Browser Checks
-
-I completed all of my testing manually in Chrome using the local Live Server page and launching devtools.
-
-### Wide Layout and Recorded Limitation
-
-Chrome’s responsive toolbar showed 1280px, while devtools measured the card grid at 682px with two 329px columns. Two cards appeared on the first row and the third was wrapped below. However, there was still no overflow as all the content displayed on the page without appearing cropped or having to scroll horizontally. 
-
-The discrepancy between the selected viewport and measured layout is unresolved as of now, this will be something I work to correct over the remainder of the course. A three column layout at an actual 1280px layout viewport was not confirmed. I will have to do additional testing here before final release.
-
-Evidence: `evidence/wide-1280.png`
-
-### Narrow Layout
-
-I tested this page by using the 375px responsive setting for card stacking, navigation wrapping, readability, and the horizontal overflow.
-
-Evidence: `evidence/narrow-375.png`
-
-### Keyboard and Checklist
-
-When completing my keyboard testing, I covered the Tab navigation, visible focus, and Space bar activation of native checkboxes. The checked state was reviewed for its bold and crossed-out text treatment. Everything worked as expected.
-
-Evidence: `evidence/keyboard-focus.png`
-
-### Print
-
-I tested the chrome print preview as well.  The preview generated two pages, removed the site navigation and the call-to-action button, and displayed content with dark text on a white background. Cards changed to a single column layout as expected.
-
-Print rules also discourage the breaks inside individual checklist items.
-
-Evidence: `evidence/print-preview.png`
-
-These checks cover this demo page in when using the chrome browser. Other browsers and the completed capstone pages will still need their own testing.
-
-## AI Disclosure
-
-I used ChatGPT to suggest the organization, token names, and the refactoring options. 
-
-I considered an initial larger version and a simplified version. I selected the smaller version, which removed the comparison table, resource list, secondary button variation, and related styles while retaining the required core patterns.
-
-I applied my code in VS Code and completed all of the browser checks myself and verified browser behavior. AI also assisted with interpreting screenshot I tried to troublehsoot regarding the cards not stacking on top of each other, but instead displaying the top two and then wrapping the third. I recorded the unresolved viewport discrepancy instead of reporting it as a successful three column test.
+### AI Disclosure
+For this week's assignment, I used ChatGPT to explain syntax, suggest edge cases, and help troubleshoot through the styles css layout concerns. I verified all browser behavior and completed all testing and the evidence myself.
