@@ -351,3 +351,129 @@
     }
   }
 }
+
+/* Module 3: responsive layout extensions */
+@layer layout {
+  .container {
+    width: auto;
+    inline-size: min(calc(100% - 2rem), var(--container-width));
+  }
+
+  .hero,
+  .section {
+    padding-block: clamp(2rem, 5vw, 4rem);
+  }
+
+  /* Second Grid pattern, alongside the existing card grid */
+  .hero-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: var(--space-section);
+  }
+
+  .hero-layout > * {
+    min-inline-size: 0;
+  }
+
+  /* Starting threshold: verify with the long hero heading
+     and planning card during browser testing. */
+  @media (min-width: 60rem) {
+    .hero-layout {
+      grid-template-columns:
+        minmax(0, 3fr) minmax(18rem, 2fr);
+    }
+  }
+}
+
+@layer components {
+  .site-header {
+    border-bottom: 0;
+    border-block-end:
+      var(--border-width) solid var(--color-border);
+  }
+
+  .site-footer {
+    border-top: 0;
+    border-block-start:
+      var(--border-width) solid var(--color-border);
+  }
+
+  .card,
+  .checklist {
+    min-inline-size: 0;
+  }
+
+  .skip-link {
+    top: auto;
+    left: auto;
+    inset-block-start: var(--space-small);
+    inset-inline-start: var(--space-small);
+  }
+
+  .resource-shell {
+    container: planning / inline-size;
+    min-inline-size: 0;
+  }
+
+  /* Stacked default also serves as the fallback */
+  .planning-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-large);
+    padding: var(--space-large);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-card);
+    background: var(--color-highlight);
+  }
+
+  .planning-card > * {
+    min-inline-size: 0;
+  }
+
+  .planning-card > .button {
+    justify-self: start;
+  }
+
+  @container planning (min-width: 36rem) {
+    .planning-card {
+      grid-template-columns: minmax(0, 1fr) fit-content(12rem);
+      align-items: center;
+    }
+  }
+}
+
+@layer states {
+  /* Stronger component boundaries for increased contrast */
+  @media (prefers-contrast: more) {
+    :root {
+      --color-border: #242b32;
+      --border-width: 2px;
+      --focus-width: 4px;
+    }
+  }
+}
+
+@layer print {
+  @media print {
+    .container {
+      inline-size: 100%;
+    }
+
+    .hero-layout,
+    .planning-card {
+      display: block;
+    }
+
+    .resource-shell {
+      container-type: normal;
+      margin-block-start: var(--space-medium);
+    }
+
+    .planning-card {
+      background: white;
+      border: 1px solid black;
+      break-inside: avoid;
+    }
+  }
+}
