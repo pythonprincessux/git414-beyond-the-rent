@@ -1,13 +1,15 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description"
-        content="Beyond the Rent helps renters organize questions about housing costs and prepare for property visits.">
+    content="Beyond the Rent helps renters organize questions about housing costs and prepare for property visits.">
   <title>Beyond the Rent | Housing Guide</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
 
@@ -25,14 +27,30 @@
   </header>
 
   <main id="main" class="container" tabindex="-1">
-    <section class="hero stack" aria-labelledby="hero-title">
-      <p class="u-uppercase">A clearer rental search</p>
-      <h1 id="hero-title">Look beyond the advertised rent.</h1>
-      <p class="u-measure">
-        Organize questions about monthly charges, move-in expenses,
-        and rental terms before choosing a place to live.
-      </p>
-      <a class="button" href="#checklist">Use the visit checklist</a>
+    <section class="hero hero-layout" aria-labelledby="hero-title">
+      <div class="stack">
+        <p class="u-uppercase">A clearer rental search</p>
+        <h1 id="hero-title">Look beyond the advertised rent.</h1>
+        <p class="u-measure">
+          Organize questions about monthly charges, move-in expenses,
+          and rental terms before choosing a place to live.
+        </p>
+        <a class="button" href="#checklist">Use the visit checklist</a>
+      </div>
+
+      <div class="resource-shell">
+        <aside class="planning-card" aria-labelledby="planning-title">
+          <div class="stack">
+            <p class="u-uppercase">Before your visit</p>
+            <h2 id="planning-title">Bring your questions.</h2>
+            <p>
+              Review monthly charges, move-in payments, and utility
+              responsibilities with the property contact.
+            </p>
+          </div>
+          <a class="button" href="#checklist">Review checklist</a>
+        </aside>
+      </div>
     </section>
 
     <section id="fees" class="section stack" aria-labelledby="fees-title">
@@ -67,8 +85,7 @@
       </aside>
     </section>
 
-    <section id="checklist" class="section stack"
-             aria-labelledby="checklist-title">
+    <section id="checklist" class="section stack" aria-labelledby="checklist-title">
       <h2 id="checklist-title">Property visit checklist</h2>
       <p id="checklist-help" class="u-measure">
         Check items as you review them, or print this list for your visit.
@@ -109,4 +126,5 @@
     </div>
   </footer>
 </body>
+
 </html>
