@@ -55,7 +55,7 @@
   body {
     background: var(--color-background);
     color: var(--color-text);
-    font: var(--text-body)/1.6 var(--font-body);
+font: var(--text-body)/var(--line-body) var(--font-body);
     overflow-wrap: anywhere;
   }
 
@@ -63,7 +63,7 @@
   h2,
   h3 {
     font-family: var(--font-heading);
-    line-height: 1.2;
+line-height: var(--line-heading);
   }
 
   h1 {
@@ -71,11 +71,11 @@
   }
 
   h2 {
-    font-size: 1.75rem;
+font-size: var(--text-section);
   }
 
   h3 {
-    font-size: 1.25rem;
+font-size: var(--text-card);
   }
 
   a {
