@@ -484,3 +484,20 @@ font-size: var(--text-card);
     }
   }
 }
+
+/* Module 4: responsive graphic and reading measure */
+@layer base {
+  p {
+    max-inline-size: var(--measure);
+  }
+}
+
+@layer components {
+  .cost-graphic {
+    display: block;
+    inline-size: 100%;
+    max-inline-size: 30rem;
+    block-size: auto;
+    aspect-ratio: 2 / 1;
+  }
+}
