@@ -98,3 +98,98 @@ All of these checks apply to the current demonstration page in Chrome.
 
 ### AI Disclosure
 For this week's assignment, I used ChatGPT to explain syntax, suggest edge cases, and help troubleshoot through the styles css layout concerns. I verified all browser behavior and completed all testing and the evidence myself.
+
+
+## Module 4: Media and Typography Optimization
+
+Kiara McRae | GIT 414
+
+Repository: https://github.com/pythonprincessux/git414-beyond-the-rent
+
+### Asset Inventory
+
+- Graphic: assets/rental-costs.svg
+- Source: I made the SVG code incorporated into this project.
+- Permission notes: No stock images or external icon libraries were used.
+  No third-party license was provided with the code.
+- Purpose: Summarize recurring charges, move-in payments, and utility
+  responsibilities.
+- Format and dimensions: SVG, 480 × 240.
+- Body fonts: Arial, Helvetica, sans-serif.
+- Heading fonts: Georgia, "Times New Roman", serif.
+- Fonts come from the visitor's device.
+
+- No audio, video, animation, or embeds are used.
+- Evidence screenshots are documentation included in my evidence folder for submission purposes only.
+
+### Image Decisions
+
+The SVG scales without needing separate raster image sizes, so srcset
+and sizes are not needed. Its simple composition works across widths
+without cropping or a picture element.
+
+The graphic displays at a maximum width of 30rem and shrinks to fit
+smaller containers. It contains vector shapes and text, with no embedded
+photographs. No separate compression comparison was performed.
+
+### Accessibility
+
+The informative graphic uses this alt text:
+"Rental cost topics: recurring charges, move-in payments, and utility
+responsibilities."
+
+Related text is also available on the page. I checked the image's
+accessibility information in Chrome DevTools.
+
+Captions, transcripts, and iframe titles are not applicable because
+this capstone has no audio, video, or embeds.
+
+### Typography
+
+- Body text: 1rem, line height 1.6.
+- Main heading: fluid sizing from 2rem to 3.5rem using clamp().
+- Section headings: fluid sizing from 1.5rem to 2rem using clamp().
+- Card headings: 1.25rem.
+- Heading line height: 1.2.
+- Paragraph line length: maximum 65ch.
+- Shared tokens control spacing and typography.
+
+
+### Layout Stability
+
+The image has explicit width and height attributes and a 2:1 CSS
+aspect ratio to reserve space while it loads.
+
+### Testing
+
+I checked the page in Chrome at:
+- 375px, 768px, and 1280px widths.
+- 200% browser zoom.
+- Slow 4G with caching disabled.
+
+I also checked SVG loading, dimensions, and alt text.
+Screenshots are stored directly in evidence/.
+
+During my testing, I found missing spacing, border, radius, and container
+tokens. I restored them after collecting the evidence. I did not
+repeat the full checks afterward, so the screenshots and audit
+document the version before that final fix.
+
+### Recorded Lighthouse Results
+
+- Performance: 98.
+- Accessibility: 100.
+- Best Practices: 100.
+- SEO: 100.
+- First Contentful Paint: 1.9 seconds.
+- Largest Contentful Paint: 2.0 seconds.
+- Total Blocking Time: 0 milliseconds.
+- Cumulative Layout Shift: 0.
+- Speed Index: 2.5 seconds.
+
+### AI Disclosure
+
+For this week's deliverable, I used ChatGPT to help compare options, draft my checklists and troubleshoot my syntax around why my spacing was so tight on my page. 
+
+I applied the changes and collected the browser evidence myself.
+The final token restoration was not fully retested. I realized the spacing was too tight after I collected all of my screenshots but it has been fixed! 
