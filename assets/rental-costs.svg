@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="480" height="240" viewBox="0 0 480 240">
+  <rect width="480" height="240" rx="16" fill="#f3e7d8"/>
+
+  <g fill="none" stroke="#763820" stroke-width="3"
+     stroke-linecap="round" stroke-linejoin="round">
+    <!-- Recurring charges: calendar -->
+    <rect x="28" y="28" width="40" height="36" rx="4"/>
+    <path d="M28 40h40M38 24v10M58 24v10"/>
+
+    <!-- Move-in payments: key -->
+    <circle cx="42" cy="120" r="12"/>
+    <path d="M54 120h20m-8 0v10m8-10v7"/>
+
+    <!-- Utilities: light bulb -->
+    <path d="M36 194a16 16 0 1 1 24 0l-4 6H40Z"/>
+    <path d="M41 207h14m-11 6h8"/>
+  </g>
+
+  <g fill="#242b32" font-family="Arial, Helvetica, sans-serif"
+     font-size="24" font-weight="700">
+    <text x="96" y="56">Recurring charges</text>
+    <text x="96" y="128">Move-in payments</text>
+    <text x="96" y="200">Utility responsibilities</text>
+  </g>
+</svg>
