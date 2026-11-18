@@ -193,3 +193,255 @@ For this week's deliverable, I used ChatGPT to help compare options, draft my ch
 
 I applied the changes and collected the browser evidence myself.
 The final token restoration was not fully retested. I realized the spacing was too tight after I collected all of my screenshots but it has been fixed! 
+
+
+Beyond the Rent
+Module 5: Accessibility Conformance and Inclusive Quality
+Kiara McRae
+November 18, 2026
+
+Repository:
+https://github.com/pythonprincessux/git414-beyond-the-rent
+
+
+## TEST SCOPE
+
+I tested three capstone pages:
+
+1. Home (index.html)
+   Tested the shared navigation, planning card, links, and checklist.
+
+2. Fees (fees.html)
+   Tested rental information, headings, the informative SVG, and card links.
+
+3. Checklist (checklist.html)
+   Tested checkbox labels, instructions, keyboard operation, focus, and checked states.
+
+
+## AUTOMATED RESULTS
+
+Chrome Lighthouse Accessibility scores:
+
+Home: 100
+Fees: 100
+Checklist: 100
+
+The original Home page also scored 100. The changes improved usability and page organization rather than raising the automated score.
+
+
+## MANUAL TESTING
+
+I tested the following in Chrome on macOS:
+
+- Tab and Shift+Tab navigation.
+- Enter to activate links.
+- Space to toggle checkboxes.
+- Visible focus and logical focus order.
+- Ability to move out of controls without a keyboard trap.
+- Skip-link navigation to the main content.
+- Navigation between all three pages.
+- Correct current-page indication.
+- Responsive behavior at 375 CSS pixels.
+- Readability and controls at 200% browser zoom.
+- Increased text spacing without clipping or overlapping.
+- Landmarks, headings, link purposes, and native HTML.
+- Image alternatives and checklist instructions.
+
+I also retested the new Fees and Checklist pages at 200% zoom and with increased text spacing. No problems were observed.
+
+Text-spacing settings:
+Line height: 1.5
+Letter spacing: 0.12em
+Word spacing: 0.16em
+Paragraph bottom margin: 2em
+
+
+## FINDINGS AND REMEDIATION
+
+These findings include usability improvements and passing checks.
+
+1. Limited page scope
+
+Evidence: The original source contained one page with three sections.
+
+Impact: It did not provide the required three-page test scope.
+
+Priority: High for assignment scope.
+
+Change: Added dedicated Fees and Checklist pages using the existing CSS.
+
+Retest: All three pages loaded successfully and were tested.
+
+
+2. General card-link wording
+
+Evidence: Links included “Prepare your questions” and “Plan your visit.”
+
+Impact: Their checklist destination was less clear when scanning links.
+
+Priority: Medium.
+
+Change: Updated the link labels to explicitly mention the checklist.
+
+Retest: Each link opened checklist.html successfully.
+
+
+3. Strikethrough on checked text
+
+Evidence: m5-before-checked.png shows lines crossing checked labels.
+
+Impact: Users may still need to read the completed questions.
+
+Priority: Medium usability improvement.
+
+Change: Removed strikethrough while retaining the checkmark, highlight, and bold text.
+
+Retest: Text remained readable and checkboxes still toggled.
+Evidence: m5-after-checked.png.
+
+
+4. Links needed updating for separate pages
+
+Evidence: Navigation and action links originally used same-page fragments.
+
+Impact: Leaving them unchanged would prevent the intended navigation to the new pages.
+
+Priority: Medium.
+
+Change: Updated navigation, buttons, and card links to the appropriate HTML pages.
+
+Retest: Navigation and checklist links worked as expected.
+
+
+5. Separate page identities
+
+Evidence: The new pages were initially copied from Home.
+
+Impact: Keeping the copied title, heading, and current-page state would make page identity confusing.
+
+Priority: Medium.
+
+Change: Added unique document titles, one main heading per page, appropriate subheadings, and the correct aria-current state.
+
+Retest: Page identities and current navigation states were checked. All three final Lighthouse Accessibility scores were 100.
+
+
+6. Checkbox naming and grouping
+
+Evidence: m5-accessibility-tree.png.
+
+Impact: Incorrect names could make checklist controls difficult to understand with assistive technology.
+
+Priority: Medium verification.
+
+Disposition: Retained native checkbox inputs wrapped in labels, with fieldset and legend grouping. No naming fix was needed.
+
+Retest: The sampled checkbox exposed its expected role, full label, and focusable state.
+
+
+## CONTRAST RESULTS
+
+Chrome DevTools reported:
+
+Brown link text on white: 8.91:1
+White button text on normal brown: 8.91:1
+White button text on darker hover brown: 12.5:1
+
+The sampled text combinations passed the displayed AA and AAA contrast checks.
+
+This was a sample, not a measurement of every color and state.
+
+
+## FORMS, MEDIA, AND MOTION
+
+The checklist uses native checkbox inputs inside labels.
+
+A fieldset and legend identify the group. aria-describedby connects the group to its instructions.
+
+The checklist does not submit information. Required fields, submission errors, and submit buttons are not applicable.
+
+Selections reset on reload in the tested browser. The page explains that selections are not saved.
+
+The rental-cost SVG is informative and has descriptive alt text. Its width and height reserve space.
+
+
+## ACCESSIBILITY-TREE SAMPLE
+
+I sampled the first checklist checkbox in Chrome DevTools.
+
+The tree showed:
+
+Group: Questions to bring
+Role: checkbox
+Name: Request a list of recurring monthly charges.
+Focusable: true
+
+This screenshot was captured on index.html before the dedicated checklist page was added. The same native labeling structure was retained.
+
+
+
+## EVIDENCE
+
+All screenshots are stored in evidence/.
+
+Baseline:
+- m5-before-lighthouse.png
+- m5-before-focus-check.png
+- m5-before-home-hover.png
+- m5-before-checked.png
+
+Manual testing:
+- m5-accessibility-tree.png
+- m5-after-checked.png
+- m5-text-spacing.png
+- m5-zoom-200.png
+- m5-contrast-link.png
+- m5-contrast-button-2.png
+- m5-contrast-button.png
+
+Final pages and automated testing:
+- m5-after-fees.png
+- m5-after-checklist.png
+- m5-after-lighthouse-home.png
+- m5-after-lighthouse-fees.png
+- m5-after-lighthouse-checklist.png
+
+Some screenshots show the original single-page version. Final page screenshots and Lighthouse results show the three-page version.
+
+
+## CONFORMANCE SUMMARY AND LIMITATIONS
+
+The tested pages appeared usable during the documented keyboard, responsive, zoom, text-spacing, and semantic checks.
+
+Changes clarified link destinations, improved checked-text readability, and established three connected pages with appropriate page identities.
+
+Visible focus and native checkbox labeling were already present and were retained.
+
+
+Testing was limited to Chrome on macOS, responsive emulation, manual checks, Lighthouse, and one accessibility-tree sample.
+
+Before final release:
+- Repeat testing on the published website.
+- Test other browsers and actual mobile devices.
+- Perform a broader screen-reader review.
+- Check all meaningful color states.
+- Review any future forms, tables, media, or motion.
+
+
+REFERENCES
+
+WCAG 2.2:
+https://www.w3.org/TR/WCAG22/
+
+WAI Easy Checks:
+https://www.w3.org/WAI/test-evaluate/easy-checks/
+
+Chrome Lighthouse Accessibility:
+https://developer.chrome.com/docs/lighthouse/accessibility/
+
+### AI disclosure
+
+For this week's deliverable, I used ChatGPT to help organize the audit, suggest checks, explain HTML and CSS changes.
+
+I considered suggested link labels, checked-state styling, page structure, and testing instructions. I applied the selected changes, performed the browser tests, checked the results, and collected the evidence myself as shown in the evidence folder screenshots.
+
