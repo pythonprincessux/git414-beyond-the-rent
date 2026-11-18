@@ -291,7 +291,7 @@
   .checklist__item input:checked+span {
     background: var(--color-complete);
     font-weight: bold;
-    text-decoration: line-through;
+text-decoration: none;
   }
 }
 
