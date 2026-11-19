@@ -445,3 +445,136 @@ For this week's deliverable, I used ChatGPT to help organize the audit, suggest 
 
 I considered suggested link labels, checked-state styling, page structure, and testing instructions. I applied the selected changes, performed the browser tests, checked the results, and collected the evidence myself as shown in the evidence folder screenshots.
 
+
+
+## Module 6: Discoverability and Structured Content Package
+
+Kiara McRae
+
+Repository: https://github.com/pythonprincessux/git414-beyond-the-rent
+
+Published site: https://pythonprincessux.github.io/git414-beyond-the-rent/
+
+### Metadata inventory
+
+#### Home: index.html
+- Purpose: Introduce the housing guide and rental-cost topics.
+- User task: Identify questions to ask before choosing a rental and open the visit checklist.
+- Title: Beyond the Rent | Housing Guide
+- Description: Beyond the Rent helps renters organize questions about housing costs and prepare for property visits.
+- Primary heading: Look beyond the advertised rent.
+- Canonical: https://pythonprincessux.github.io/git414-beyond-the-rent/
+- Supporting links: “Fees” opens fees.html; “Use the visit checklist” opens checklist.html.
+- Visible content: Monthly charges, move-in expenses, rental terms, and property visit preparation.
+
+#### Fees: fees.html
+- Purpose: Explains the rental-cost topics to discuss with a property contact.
+- User task: Helps prepare questions about recurring charges, move-in payments, and written terms.
+- Title: Rental Fees and Questions | Beyond the Rent
+- Description: Organizes the questions about recurring rental charges, move-in expenses, utility responsibilities, and written rental terms.
+- Primary heading: Questions to organize your search
+- Canonical: https://pythonprincessux.github.io/git414-beyond-the-rent/fees.html
+- Supporting links: “Prepare your monthly-charge checklist” and “Review the move-in checklist” both open checklist.html.
+- Visible content: Monthly charges, move-in expenses, written information, and a reminder to confirm details.
+
+#### Checklist: checklist.html
+- Purpose: Provide questions to bring to a property visit.
+- User task: Review and check questions about monthly charges, move-in payments, utilities, and written confirmation.
+- Title: Property Visit Checklist | Beyond the Rent
+- Description: Prepare for a property visit with questions about recurring charges, move-in payments, utilities, and written terms.
+- Primary heading: Property visit checklist
+- Canonical: https://pythonprincessux.github.io/git414-beyond-the-rent/checklist.html
+- Supporting links: “Home” opens index.html; “Fees” opens fees.html.
+- Visible content: Four labeled checkboxes and instructions explaining that selections are not saved.
+
+### Headings, links, and accessibility
+
+Each page has a primary h1. Section and card headings organize supporting content. Navigation and content links use HTML anchors with real href values. Each page identifies its current navigation item with aria-current="page".
+
+This work builds on Module 5 improvements to checklist link wording, checked-text readability, keyboard focus, and separate page navigation. Earlier evidence is still in my evidence folder in this repo.
+
+### Canonical, robots, and sitemap decisions
+
+Canonical links apply now because the site is published. Each page identifies its own preferred public URL. The Home canonical uses the directory URL rather than the equivalent index.html address.
+
+No restrictive robots meta tag was added because these pages are intended to be public. No project-level robots.txt was added. A robots.txt file must be served from the host root, not this GitHub Pages project subdirectory. 
+
+An XML sitemap is deferred for this small, three-page site because all important pages are linked through navigation. If the site grows, I would create a sitemap containing the preferred canonical URLs and submit it through Search Console. 
+
+### Home social metadata
+
+- og:title: Beyond the Rent | Housing Guide
+- og:description: Organize questions about monthly charges, move-in expenses, and rental terms before choosing a place to live.
+- og:url: https://pythonprincessux.github.io/git414-beyond-the-rent/
+- og:type: website
+- og:image: https://pythonprincessux.github.io/git414-beyond-the-rent/assets/beyond-the-rent-social.png
+- og:image:alt: Beyond the Rent: Look beyond the advertised rent. Monthly charges, move-in expenses, and property visit checklist.
+
+I created the preview image in Canva using the site's colors and visible topics. 
+
+### Structured data
+
+Home includes a JSON-LD WebPage object inside the head. It describes the page name, public URL, description, and English language.
+
+WebPage fits this general housing guide. I did not add rental listings, prices, ratings, or other details that are absent from the visible content.
+
+The Schema.org Validator fetched the published Home page and detected one WebPage with 0 errors and 0 warnings. This validates the detected structured data.
+
+### Image discoverability
+
+#### assets/rental-costs.svg
+- Used on: Home and Fees.
+- Dimensions in HTML: 480 × 240.
+- Alt text: Rental cost topics: recurring charges, move-in payments, and utility responsibilities.
+- Context: Appears near rental-cost headings, explanatory text, and topic cards.
+- Relevance: Reinforces the rental-cost topics discussed on the page.
+- Filename: Describes the subject without keyword stuffing.
+
+#### assets/beyond-the-rent-social.png
+- Used for: Home social previews.
+- Design target: 1200 × 630 pixels.
+- Text alternative: Supplied through og:image:alt.
+- Context: Represents the Home page through its name, tagline, and rental-cost topics.
+- Relevance: Uses content already represented on the site.
+- Filename: Identifies the site and the image's social-preview purpose.
+
+Validation screenshots are supporting documentation, not content images used in the website interface.
+
+### Validation evidence
+
+- assets/m6-schema-validation.png: Published Home WebPage validation showing 0 errors and 0 warnings.
+- assets/m6-html-home.png: W3C Nu HTML Checker result for Home.
+- assets/m6-html-fees.png: W3C Nu HTML Checker result for Fees.
+- assets/m6-html-checklist.png: W3C Nu HTML Checker result for Checklist.
+- assets/m6-page-source.png: Published Home source inspection.
+
+Source inspection checks the title, description, canonical URL, Open Graph tags, and JSON-LD inside the head. The saved validator results document the checks performed. HTML syntax validation does not establish search indexing, ranking, or identical social previews.
+
+### Unsupported claims I will not make
+
+1. These metadata changes guarantee first-place search rankings or increased traffic. I have no ranking or traffic evidence supporting that claim.
+2. Valid WebPage JSON-LD guarantees a Google rich result. Schema validation does not prove eligibility or guarantee display.
+3. Every social platform will show the exact same preview. Platforms can interpret, crop, and cache preview information differently.
+
+### Sources
+
+- Schema.org WebPage definition:
+  https://schema.org/WebPage
+- Schema.org Validator:
+  https://validator.schema.org/
+- Open Graph protocol:
+  https://ogp.me/
+- Google Search Central, robots.txt introduction:
+  https://developers.google.com/search/docs/crawling-indexing/robots/intro
+- Google Search Central, sitemap guidance:
+  https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview
+- Google Search Central, structured-data guidelines:
+  https://developers.google.com/search/docs/appearance/structured-data/sd-policies
+- W3C Nu HTML Checker:
+  https://validator.w3.org/nu/
+
+### AI disclosure
+
+For this week's deliverable, I used ChatGPT to help draft alternatives, organize my inventories, and explain my documentation. I changed the visible page content, applied the edits, created the social image in Canva, and performed the browser validation checks.
+
+The implemented changes include page-specific canonical URLs, Home social metadata, a social preview image, and Home WebPage JSON-LD. Existing unique titles and descriptions were kept from the previous weeks. Placeholder URLs from earlier practice were all replaced with the published GitHub Pages address.
