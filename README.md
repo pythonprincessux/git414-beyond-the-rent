@@ -1,6 +1,162 @@
 ## Module 3: Responsive Layout System
 Kiara McRae | GIT 414
 
+# Beyond the Rent
+
+Kiara L. McRae | GIT 414 | Final Production Website Capstone
+
+## Website and repository
+
+- [Published website](https://pythonprincessux.github.io/git414-beyond-the-rent/)
+- [Repository](https://github.com/pythonprincessux/git414-beyond-the-rent)
+
+Beyond the Rent helps first-time renters organize questions about rental
+charges, move-in payments, utilities, and written terms before a property visit.
+
+## Final page scope
+
+- Home: introduces the guide and links to rental-cost topics and the checklist.
+- Fees: organizes rental-cost questions and reminders to confirm written terms.
+- Checklist: provides four native checkbox controls with clear instructions.
+
+The original six-page proposal was reduced to three implemented pages.
+Cost Comparison, Glossary, and Resources were deferred. The original
+planning package is retained as historical evidence.
+
+## Project structure
+
+- index.html: Home page.
+- fees.html: rental-cost questions.
+- checklist.html: property visit checklist.
+- css/styles.css: shared layered stylesheet.
+- assets/: website graphics and Module 6–7 evidence screenshots.
+- evidence/: Module 5 accessibility screenshots.
+- docs/: planning documents and final release report.
+
+## Documentation
+
+- [Original capstone planning package](docs/capstone-planning-package.pdf)
+- [CSS system planning review](docs/css-system-planning-review.pdf)
+- [Scope and release plan](docs/final-scope-release-plan.pdf)
+- [Final release report and technical defense](docs/final-release-report.pdf)
+
+The final report documents implementation decisions, testing, remediation,
+remaining limitations, and meaningful AI assistance.
+
+## Final CSS implementation decisions
+
+These implemented values make the earlier CSS planning decisions specific:
+
+- Background: #FFFAF3.
+- Surface: #FFFFFF.
+- Text: #242B32.
+- Brand and primary buttons: #763820.
+- Button hover: #542716.
+- Default border: #A79D91.
+- Highlight: #F3E7D8.
+- Checked-item highlight: #E8F1E9.
+- Keyboard focus: #005FCC.
+- Body font: Arial, Helvetica, sans-serif.
+- Heading font: Georgia, "Times New Roman", serif.
+- Body size: 1rem with 1.6 line height.
+- Main heading: clamp(2rem, 1.5rem + 2.5vw, 3.5rem).
+- Paragraph reading measure: 65ch.
+- Main container maximum: 72rem.
+
+The site uses shared CSS layers, tokens, reusable components, responsive
+grids, a planning-card container query, visible focus, and print styles.
+Core reading, navigation, and checkbox interaction require no JavaScript.
+
+## Module 7 release summary
+
+### Validation and metadata
+
+Home and Checklist were checked with the HTML validator during the release
+sprint. Module 6 includes HTML validation evidence for all three pages.
+
+The CSS validator reported three findings involving container-query syntax
+and two warnings concerning static checking of CSS variables. These findings
+are documented. This is not described as an error-free CSS validation pass.
+
+Published Home source inspection confirmed its title, description,
+canonical URL, Open Graph tags, and WebPage JSON-LD.
+
+The Schema.org Validator detected one WebPage with zero errors and warnings
+during Module 6 testing.
+
+### Links and interaction
+
+I manually checked primary navigation across all three pages and at least
+five Home content/action links. Tested destinations worked.
+
+Keyboard checks covered Tab, Shift+Tab, Enter, visible focus, skip-link
+navigation, and Space to toggle checklist controls.
+
+### Responsive and browser checks
+
+Home was checked at 375px, 768px, and 1280px widths and 200% browser zoom.
+
+I also tested the published site in Safari 26.6.2. All three pages,
+navigation links, checklist controls, narrow-window layout, and 200% zoom
+worked without observed problems.
+
+Firefox and actual mobile devices were not tested.
+
+### Performance
+
+The recorded Lighthouse mobile diagnostic used Slow 4G throttling:
+
+- Performance: 91.
+- First Contentful Paint: 1.4 seconds.
+- Largest Contentful Paint: 1.4 seconds.
+- Total Blocking Time: 0 milliseconds.
+- Cumulative Layout Shift: 0.
+- Speed Index: 9.8 seconds.
+
+Speed Index remains an unresolved finding. Its cause was not established,
+and no measured improvement is claimed.
+
+### Release evidence
+
+- [Home HTML validation](assets/m7-html-home.png)
+- [Checklist HTML validation](assets/m7-html-checklist.png)
+- [CSS validator findings](assets/m7-css.png)
+- [Home at 375px](assets/m7-home-narrow-375.png)
+- [Home at 768px](assets/m7-home-medium-768.png)
+- [Home at 1280px](assets/m7-home-wide-1280.png)
+- [Home at 200% zoom](assets/m7-home-zoom-200.png)
+- [Keyboard link focus](assets/m7-keyboard-link-focus.png)
+- [Keyboard checkbox focus](assets/m7-keyboard-checkbox-focus.png)
+- [Lighthouse performance](assets/m7-lighthouse-performance.png)
+- [Lighthouse metrics](assets/m7-lighthouse-metrics.png)
+- [Lighthouse diagnostics](assets/m7-lighthouse-diagnostics.png)
+- [Published metadata source](assets/m7-metadata-source.png)
+- [Safari visual check](assets/m7-safari-check.png)
+- [Safari version](assets/m7-safari-version.png)
+
+### Known limitations
+
+- Checklist selections are temporary.
+- The original 320px acceptance criterion is not demonstrated by the
+  saved release screenshots.
+- Broader screen-reader and actual mobile-device testing remain incomplete.
+- CSS validator findings and the Speed Index concern remain documented.
+- Platform-specific social preview rendering has not been verified.
+- Accessibility spot checks do not establish complete WCAG conformance.
+- Metadata and structured data do not guarantee rankings or rich results.
+
+## AI disclosure
+
+I used ChatGPT to help organize documentation  and troubleshoot HTML/CSS.
+
+I reviewed suggested changes against the visible site, applied selected
+edits, performed browser checks, and collected evidence myself.
+
+## Historical module documentation
+
+The sections below preserve earlier development notes. The release summary
+and final report above describe the final testing scope and known limitations.
+
 ### Building on Module 2
 For this week, I decided to update the extends of my existing CSS architecture rather than replacing
 it. The reset, base, layout, components, utilities, states, overrides,
